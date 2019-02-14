@@ -2,7 +2,7 @@ pipeline{
             stages{
                    stage('code checkout'){
                      steps{
-                          sh ''
+                          sh 'https://github.com/tarakaharish/Docker_pipeline.git'
                           }
                         }
                     stage('')
