@@ -3,7 +3,7 @@ pipeline{
             stages{
                    stage('code checkout'){
                      steps{
-                          git url:'https://github.com/tarakaharish/Docker_pipeline.git',credentialsId:'tarak',branch:'master'
+                          git url:'https://github.com/tarakaharish/Docker_pipeline.git',branch:'master'
                           }
                         }
                     stage('build image'){
