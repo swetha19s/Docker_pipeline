@@ -16,7 +16,7 @@ pipeline{
                       steps{
                       sh 'mvn clean compile package'
                       sh 'mvn sonar:sonar -Dsonar.host.url=http://13.232.233.79:9000'
-                      sh 'curl -v --user admin:admin123 --upload-file "**/target/*.war" http://13.232.233.79:8081/repository/SimpleWebapp/*.war'
+                      sh 'curl -v --user admin:admin123 --upload-file " /usr/src/mymaven/workspace/Docker_jenkins/target/mavenwebApp.war" http://13.232.233.79:8081/repository/SimpleWebapp/mavenwebApp.war'
                       }
                       }
                   }
