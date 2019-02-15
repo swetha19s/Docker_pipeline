@@ -10,7 +10,7 @@ pipeline{
                     agent{
                           dockerfile{
                                      filename "Dockerfile"
-                                     label "Docker_AWS_Slave"
+                                    // label "Docker_AWS_Slave"
                                      }
                            }
                       steps{
