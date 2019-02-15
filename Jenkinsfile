@@ -9,8 +9,8 @@ pipeline{
                     stage('build image'){
                     agent{
                           dockerfile{
-                                     filename: 'Dockerfile'
-                                     label: 'Docker_AWS_Slave'
+                                     filename "Dockerfile"
+                                     label "Docker_AWS_Slave"
                                      }
                            }
                       steps{
