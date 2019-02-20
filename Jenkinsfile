@@ -1,30 +1,36 @@
 pipeline{
-            agent{label 'Docker_AWS_Slave'}
+           agent none
             environment {
         IMAGE = "container"
      }
             stages{
                    stage('code checkout'){
+                      agent{label 'Docker_AWS_Slave'}
                      steps{
                           git url:'https://github.com/tarakaharish/Docker_pipeline.git',branch:'master'
                           }
                         }
                     stage('build image and war file'){
-                    agent{
-                          dockerfile{
-                                     filename "Dockerfile"
-                                     label "Docker_AWS_Slave"
-                                     }
-                           }
+                                agent{
+                                      dockerfile{
+                                                 filename "Dockerfile"
+                                                 label "Docker_AWS_Slave"
+                                                 }
+                                       }
                       steps{
-                      sh 'mvn clean compile package'
-                      }
+                             script{
+                                     def image = docker.build("${IMAGE}")
+                                     container.inside{
+                                                      sh 'mvn clean compile package'
+                                                      }
+                                    }
+                      
+                            }
                       }
                         stage('code analysis'){
                                     agent {label 'Docker_AWS_Slave'}
                                     steps{
                                                 script{
-                                                             def image = docker.build("${IMAGE}")
                                                             container.inside{
                                                                          sh 'mvn sonar:sonar -Dsonar.host.url=http://13.232.233.79:9000'
                                                             }
