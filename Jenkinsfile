@@ -1,8 +1,6 @@
 pipeline{
            agent any
-               environment {
-                       IMAGE = "deploy_docker"
-                   }
+          
             stages{
                    stage('code checkout'){
                      steps{
@@ -16,7 +14,7 @@ pipeline{
                                  }
                        stage('Docker deploy'){
                                   steps{
-                                         sh 'cd /home/ec2-user'
+                                     
                                          sh 'docker -v'
                                          sh 'docker build -t deploy .'
                                          sh 'docker run -d -p 8888:8080 deploy'
