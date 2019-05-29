@@ -1,0 +1,8 @@
+node('docker') {
+ 
+    stage 'Checkout'
+        checkout scm
+    stage 'Deploy on docker'
+        sh "docker build -t deploy_docker ."
+        sh "docker run -d -p 8888:8080 deploy_docker"
+  }
