@@ -16,12 +16,11 @@ pipeline{
                                  }
                        stage('Docker deploy'){
                                   steps{
-                                    script{
-                                        def image = docker.build("${IMAGE}")
-                                        def cont = image.run('--name testing -p 8082:8080')
+                                         sh 'docker build -t deploy .'
+                                         sh 'docker run -d -p 8888:8080 deploy'
                                     }
                                   }
-                       }
+                       
             }
            
            }
