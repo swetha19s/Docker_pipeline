@@ -21,7 +21,7 @@ pipeline{
  "files": [
  {
  "pattern": "/var/lib/jenkins/workspace/artifactory/target/*.war",
- "target": "example-repo-local"
+ "target": "application1"
  }
  ]
  }"""
