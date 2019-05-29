@@ -1,5 +1,5 @@
 pipeline{
-           agent{label 'Docker_AWS_Slave'}
+           agent{label 'Docker_agent'}
           
             stages{
                    stage('code checkout'){
