@@ -12,15 +12,7 @@ pipeline{
                                            sh ' mvn clean install'
                                             }
                                  }
-                       stage('Docker deploy'){
-                                  agent {label 'Docker_agent'}
-                                     steps{
-                                       sh 'cd /home/ec2-user/Swetha/'
-                                       sh 'sudo docker build -t deploy .'
-                                       sh 'sudo docker run -d -p 8888:8080 deploy'
-            }
-        }
-                       
+           
             }
            
            }
