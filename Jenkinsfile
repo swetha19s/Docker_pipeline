@@ -1,6 +1,8 @@
 pipeline{
            agent any
-          
+               environment {
+                       IMAGE = "deploy_docker"
+                   }
             stages{
                    stage('code checkout'){
                      steps{
@@ -14,8 +16,10 @@ pipeline{
                                  }
                        stage('Docker deploy'){
                                   steps{
-                                         sh 'sudo docker build -t deploy .'
-                                         sh 'sudo docker run -d -p 8888:8080 deploy'
+                                    script{
+                                        def image = docker.build("${IMAGE}")
+                                        def cont = image.run('--name testing -p 8082:8080')
+                                    }
                                   }
                        }
             }
