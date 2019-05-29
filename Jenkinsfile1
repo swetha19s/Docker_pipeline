@@ -1,4 +1,4 @@
-node {
+node('Docke_agent') {
  
     stage 'Checkout'
         checkout scm
