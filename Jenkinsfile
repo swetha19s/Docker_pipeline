@@ -27,7 +27,13 @@ pipeline{
  }"""
 )
                                   }
+             
                        }
+                       stage('Docker'){
+                       steps{
+                                 sh 'docker -v'
+                       }
+            }
             }
            
            }
