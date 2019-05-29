@@ -12,29 +12,14 @@ pipeline{
                                            sh ' mvn clean install'
                                             }
                                  }
+                       stage('Docker deploy'){
+                                  steps{
+                                         sh 'sudo docker build -t deploy .'
+                                         sh 'sudo docker run -d -p 8888:8080 deploy'
+                                  }
+                       }
             }
-           post{
-                      failure{
-                                 
-                                 junit (
-                                  testResults: '**/surefire-reports/*.xml',
-                                  testDataPublishers: [
-                                    jiraTestResultReporter(
-                                      configs: [
-                                        jiraStringField(fieldKey: 'summary', value: '${DEFAULT_SUMMARY}'),
-                                        jiraStringField(fieldKey: 'description', value: '${DEFAULT_DESCRIPTION}'),
-                                        jiraStringArrayField(fieldKey: 'labels', values: [jiraArrayEntry(value: 'Jenkins'), jiraArrayEntry(value:'Integration')])
-                                      ],
-                                      projectKey: 'NMS',
-                                      issueType: '1',
-                                      autoRaiseIssue: false,
-                                      autoResolveIssue: false,
-                                      autoUnlinkIssue: false,
-                                    )
-                                  ]
-                                 )
-                      }
+           
            }
-}
               
                     
