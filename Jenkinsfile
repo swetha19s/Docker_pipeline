@@ -12,7 +12,19 @@ pipeline{
                                            sh ' mvn clean install'
                                             }
                                  }
-           
+           rtUpload (
+ serverId: "http://13.67.56.156:8081/artifactory/webapp/#/artifacts/browse/tree/General/example-repo-local",
+ spec:
+ """{
+ "files": [
+ {
+ "pattern": "/var/lib/jenkins/workspace/artifactory/target/*.war",
+ "target": "example-repo-local"
+ }
+ ]
+ }"""
+)
+
             }
            
            }
