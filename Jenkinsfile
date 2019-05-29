@@ -16,6 +16,7 @@ pipeline{
                                  }
                        stage('Docker deploy'){
                                   steps{
+                                         sh 'docker -v'
                                          sh 'docker build -t deploy .'
                                          sh 'docker run -d -p 8888:8080 deploy'
                                     }
