@@ -15,16 +15,16 @@ pipeline{
                        stage('Upload artifacts'){
                                   steps{
            rtUpload (
- serverId: "Artifactory",
- spec:
- """{
- "files": [
- {
- "pattern": "/var/lib/jenkins/workspace/artifactory/target/*.war",
- "target": "example-repo-local"
- }
- ]
- }"""
+                     serverId: "Artifactory",
+                     spec:
+                     """{
+                     "files": [
+                     {
+                     "pattern": "/var/lib/jenkins/workspace/artifactory/target/*.war",
+                     "target": "example-repo-local"
+                     }
+                     ]
+                     }"""
 )
                                   }
              
@@ -32,6 +32,9 @@ pipeline{
                        stage('Docker'){
                        steps{
                                  sh 'docker -v'
+                                  sh 'cd /var/lib/jenkins/workspace/Build_Deploy'
+                                  sh 'sudo docker build -t deploy .'
+                                  sh 'sudo docker run -d -p 8888:8080 deploy'
                        }
             }
             }
