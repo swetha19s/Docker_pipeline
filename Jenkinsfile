@@ -12,6 +12,8 @@ pipeline{
                                            sh ' mvn clean install'
                                             }
                                  }
+                       stage('Upload artifacts'){
+                                  steps{
            rtUpload (
  serverId: "http://13.67.56.156:8081/artifactory/webapp/#/artifacts/browse/tree/General/example-repo-local",
  spec:
@@ -24,7 +26,8 @@ pipeline{
  ]
  }"""
 )
-
+                                  }
+                       }
             }
            
            }
