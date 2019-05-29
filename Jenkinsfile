@@ -4,7 +4,7 @@ pipeline{
             stages{
                    stage('code checkout'){
                      steps{
-                          git url:'https://github.com/tarakaharish/Docker_pipeline.git',branch:'master'
+                          git url:'https://github.com/swetha19s/Docker_pipeline.git',branch:'master'
                           }
                         }
                        stage('maven'){
