@@ -29,22 +29,6 @@ pipeline{
                                   }
              
                        }
-                        stage('Download artifacts'){
-                                  steps{                      
-                                        rtDownload (
-                                            serverId: "Artifactory",
-                                            spec:
-                                                """{
-                                                  "files": [
-                                                    {
-                                                      "pattern": "example-repo-local/*.war",
-                                                      "target": "/var/lib/jenkins/workspace/artifactory/target,
-                                                    }
-                                                 ]
-                                                }"""
-                                        )
-                                  }
-                        }
                        stage('Docker'){
                                   steps{
                                      sh 'cd /var/lib/jenkins/workspace/Build_Deploy'
