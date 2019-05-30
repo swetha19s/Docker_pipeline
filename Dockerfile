@@ -10,4 +10,4 @@ COPY tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 COPY manager.xml /usr/local/tomcat/conf/Catalina/localhost/manager.xml
 
-COPY /var/lib/jenkins/workspace/Build_Deploy/target/mavenwebApp.war /usr/local/tomcat/webapps/mavenwebApp.war
+COPY target/mavenwebApp.war /usr/local/tomcat/webapps/mavenwebApp.war
