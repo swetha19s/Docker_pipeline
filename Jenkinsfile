@@ -32,8 +32,8 @@ pipeline{
                        stage('Docker'){
                                   steps{
                                      sh 'cd /var/lib/jenkins/workspace/Build_Deploy'
-                                     sh 'sudo docker build -t deploy .'
-                                     sh 'sudo docker run -d -p 8888:8080 deploy'
+                                     sh 'docker build -t deploy .'
+                                     sh 'docker run -d -p 8888:8080 deploy'
                        }
             }
             }
