@@ -11,4 +11,3 @@ COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 COPY manager.xml /usr/local/tomcat/conf/Catalina/localhost/manager.xml
 
 COPY /var/lib/jenkins/workspace/Build_Deploy/target/mavenwebApp.war /usr/local/tomcat/webapps/mavenwebApp.war
-CMD chmod +x /usr/local/tomcat/webapps/mavenwebApp.war
